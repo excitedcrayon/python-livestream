@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket LiveStream Test</title>
+</head>
+
+<body>
+    <img id="video" src="" alt="">
+</body>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        console.log('Window Loaded');
+        liveStreamTest();
+    });
+
+    function liveStreamTest() {
+        let socket = new WebSocket('ws://localhost:9500');
+        const video = document.querySelector('#video');
+
+        socket.addEventListener('open', () => {
+            console.log('Connection opened');
+        });
+
+        socket.addEventListener('message', (event) => {
+            requestAnimationFrame(() => {
+                video.src = `data:image/jpeg;base64,${event.data}`;
+            });
+        });
+    }
+
+</script>
+
+</html>
