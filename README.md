@@ -37,3 +37,7 @@ A simple snippet which utilizes websockets to deliver captured video data and se
 ## Demo
 
 - The demo.mp4 video file will show the outcome of this research
+
+## Preview Image
+
+<img src="demo.png">
